@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.example.mychat"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.mychat"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -75,5 +75,10 @@ dependencies {
     //navigation
     val nav_version = "2.7.6"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+    //imagepicker
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+
+    //implementation ("com.github.dhaval2404imagepicker-support:1.7.1")
 
 }

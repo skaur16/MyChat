@@ -64,8 +64,8 @@ fun ProfileCard(profile: Profile, nav: NavHostController, mainViewModel: MainVie
                 //modifier = Modifier.border()
                 Text(text = "Gmail: ${profile.mail}")
                 Button(onClick = {
-                    //mainviewmodel.friendmail.value = profile.mail
-                    nav.navigate("chat_screen")
+                    mainViewModel.friendMail.value = profile.mail
+                    nav.navigate("MyChat")
                 }) {
                     Text(text = "Chat")
                 }

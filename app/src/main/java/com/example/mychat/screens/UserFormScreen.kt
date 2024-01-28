@@ -82,7 +82,7 @@ fun UserForm(
 
                     Row() {
 
-                        TextField(value = mainViewModel.mail.value,
+                        TextField(value = mainViewModel.userMail.value,
                             onValueChange = {},
                             label = { Text(text = "Mail") }
                         )
@@ -118,7 +118,7 @@ fun UserForm(
 
                 mainViewModel.profile.value = mainViewModel.profile.value.copy(
                     name = mainViewModel.name.value,
-                    mail = mainViewModel.mail.value,
+                    mail = mainViewModel.userMail.value,
                     phone = mainViewModel.phone.value,
                     address = mainViewModel.address.value
                 )

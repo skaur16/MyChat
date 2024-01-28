@@ -25,6 +25,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.mychat.screens.Chat
 import com.example.mychat.screens.ListOfUsers
 import com.example.mychat.screens.UserForm
 import com.example.mychat.ui.theme.MyChatTheme
@@ -64,6 +65,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("UserFormScreen"){ UserForm(mainViewModel , nav ,Pick)}
                         composable("ListOfUsers"){ListOfUsers(mainViewModel,nav)}
+                        composable("MyChat"){Chat(mainViewModel)}
                     }
 
                 }
@@ -130,7 +132,7 @@ fun App(
                     Log.e("TAG", "FirebaseAuth :- ${user.providerId}")
                     Log.e("TAG", "FirebaseAuth :- ${user.uid}")
 
-                    mainViewModel.mail.value = user.email.toString()
+                    mainViewModel.userMail.value = user.email.toString()
 
 
                 }

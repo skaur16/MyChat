@@ -21,6 +21,17 @@ class MainViewModel : ViewModel() {
     var image = mutableStateOf<Uri?>(null)
     var listOfUsers = mutableStateOf(mutableListOf(Profile()))
 
+    var getMyChat = mutableStateOf(false)
+    var message = mutableStateOf(Message())
+    var text = mutableStateOf("")
+    var listOfMessage = mutableStateOf(listOf<Message>())
+
+    var userMail = mutableStateOf("")
+    var friendMail = mutableStateOf("")
+    var msg = mutableStateOf("")
+    var groupId = mutableStateOf("${userMail} and ${friendMail}")
+    var groupIdReverse = mutableStateOf("${friendMail} and ${userMail}")
+
     fun sendProfile(){
         firebase.sendProfile(profile.value)
     }
@@ -29,6 +40,26 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             listOfUsers.value = firebase.getProfile().toMutableList().also{
                 Log.e(" Viewmodel Profile", it.toString())
+            }
+        }
+    }
+
+    fun sendMessage(){
+        message.value = message.value.copy(
+            message = msg.value
+        )
+
+        viewModelScope.launch {
+            firebase.sendMessage(message.value , groupId.value)
+        }
+    }
+
+    fun getMessage(){
+        viewModelScope.launch {
+            firebase.getMessage(groupId.value).also {
+                if(it!=null){
+                    listOfMessage.value = it.messageArray
+                }
             }
         }
     }

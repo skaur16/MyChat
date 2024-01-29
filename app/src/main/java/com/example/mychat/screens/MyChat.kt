@@ -1,10 +1,12 @@
 package com.example.mychat.screens
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -12,6 +14,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.mychat.MainViewModel
 
@@ -32,7 +35,10 @@ fun Chat(mainViewModel: MainViewModel) {
            mainViewModel.getMessage()
             LazyColumn() {
                 items(mainViewModel.listOfMessage.value){
-                    Text(text=it.message)
+                   Card (){
+                       Text(text=it.message)
+                   }
+
                 }
                 //Text(text="")
             }

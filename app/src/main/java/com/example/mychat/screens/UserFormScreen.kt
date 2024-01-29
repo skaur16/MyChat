@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 //import coil.compose.AsyncImage
@@ -58,8 +59,12 @@ fun UserForm(
                         }
                     }
                     else{
+
+                        //mainViewModel.getImage()
                         AsyncImage(model = mainViewModel.image.value,
-                            contentDescription = "bdhai ho")
+                            contentDescription = "bdhai ho",
+                            modifier = Modifier.width(100.dp).height(100.dp)
+                            )
                     }
 
                 }
@@ -120,7 +125,8 @@ fun UserForm(
                     name = mainViewModel.name.value,
                     mail = mainViewModel.userMail.value,
                     phone = mainViewModel.phone.value,
-                    address = mainViewModel.address.value
+                    address = mainViewModel.address.value,
+                    displayImage = mainViewModel.image.value.toString()
                 )
 
                 mainViewModel.sendProfile()
@@ -137,6 +143,8 @@ fun UserForm(
             }) {
                 Text(text="View")
             }
+
+
         }
 
     }

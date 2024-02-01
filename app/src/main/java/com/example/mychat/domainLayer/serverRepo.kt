@@ -6,9 +6,9 @@ import com.example.mychat.dataLayer.Profile
 
 interface serverRepo {
 
-    fun sendProfile(profile : Profile)
-    fun getProfile() : List<Profile>
-    fun sendMessage(message: Message, groupId: String , groupIdReverse : String)
-    fun getMessage(groupId : String, groupIdReverse: String) : ArrayOfMessage?
+    suspend fun sendProfile(profile : Profile)
+    suspend fun getProfile() : List<Profile>
+    suspend fun sendMessage(message: Message, groupId: String , groupIdReverse : String)
+    suspend fun getMessage(groupId : String, groupIdReverse: String) : ArrayOfMessage?
 
 }

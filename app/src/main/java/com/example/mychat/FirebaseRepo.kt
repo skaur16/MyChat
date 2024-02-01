@@ -1,8 +1,10 @@
 package com.example.mychat
 
-import android.net.Uri
 import android.util.Log
 import androidx.core.net.toUri
+import com.example.mychat.dataLayer.ArrayOfMessage
+import com.example.mychat.dataLayer.Message
+import com.example.mychat.dataLayer.Profile
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -14,7 +16,7 @@ class FirebaseRepo {
     val db = Firebase.firestore
     val storageRef = Firebase.storage.reference
 
-    suspend fun sendProfile(profile: Profile ) {
+    suspend fun sendProfile(profile: Profile) {
 
         db.collection("Profile")
             .document(profile.mail)
@@ -46,7 +48,7 @@ class FirebaseRepo {
 
     }*/
 
-    suspend fun sendMessage(message: Message, groupId: String , groupIdReverse : String) {
+    suspend fun sendMessage(message: Message, groupId: String, groupIdReverse : String) {
 
         val doc = db.collection("Chats")
             .document(groupId)

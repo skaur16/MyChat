@@ -1,4 +1,4 @@
-package com.example.mychat
+package com.example.mychat.dataLayer
 
 data class Profile(
     var name : String = "",

@@ -25,9 +25,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.mychat.screens.Chat
-import com.example.mychat.screens.ListOfUsers
-import com.example.mychat.screens.UserForm
+import com.example.mychat.presentationLayer.screens.Chat
+import com.example.mychat.presentationLayer.screens.ListOfUsers
+import com.example.mychat.presentationLayer.screens.UserForm
+import com.example.mychat.presentationLayer.viewModel.MainViewModel
 import com.example.mychat.ui.theme.MyChatTheme
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
@@ -63,9 +64,9 @@ class MainActivity : ComponentActivity() {
                         composable("MainActivity"){
                             App(::launchLoginFlow , mainViewModel, nav)
                         }
-                        composable("UserFormScreen"){ UserForm(mainViewModel , nav ,Pick)}
-                        composable("ListOfUsers"){ListOfUsers(mainViewModel,nav)}
-                        composable("MyChat"){Chat(mainViewModel)}
+                        composable("UserFormScreen"){ UserForm(mainViewModel , nav ,Pick) }
+                        composable("ListOfUsers"){ ListOfUsers(mainViewModel,nav) }
+                        composable("MyChat"){ Chat(mainViewModel) }
                     }
 
                 }

@@ -1,11 +1,13 @@
-package com.example.mychat
+package com.example.mychat.presentationLayer.viewModel
 
 import android.net.Uri
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
-import androidx.core.net.toUri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mychat.FirebaseRepo
+import com.example.mychat.dataLayer.Message
+import com.example.mychat.dataLayer.Profile
 import kotlinx.coroutines.launch
 
 

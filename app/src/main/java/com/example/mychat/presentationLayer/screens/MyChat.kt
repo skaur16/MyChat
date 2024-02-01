@@ -1,6 +1,5 @@
-package com.example.mychat.screens
+package com.example.mychat.presentationLayer.screens
 
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
@@ -14,9 +13,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.example.mychat.MainViewModel
+import com.example.mychat.presentationLayer.viewModel.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,6 +36,8 @@ fun Chat(mainViewModel: MainViewModel) {
                    Card (){
                        Text(text=it.message)
                    }
+
+                    
 
                 }
                 //Text(text="")

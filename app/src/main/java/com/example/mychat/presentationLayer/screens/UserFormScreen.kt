@@ -1,4 +1,4 @@
-package com.example.mychat.screens
+package com.example.mychat.presentationLayer.screens
 
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
@@ -23,11 +23,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
-import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 //import coil.compose.AsyncImage
-import com.example.mychat.MainViewModel
+import com.example.mychat.presentationLayer.viewModel.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

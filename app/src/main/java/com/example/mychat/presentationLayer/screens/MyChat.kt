@@ -14,11 +14,12 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import com.example.mychat.domainLayer.HiltViewModel
 import com.example.mychat.presentationLayer.viewModel.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Chat(mainViewModel: MainViewModel) {
+fun Chat(mainViewModel: HiltViewModel) {
     Column() {
         TopAppBar(title = {
             Text(text = "My Chat")

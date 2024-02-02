@@ -13,12 +13,12 @@ import kotlinx.coroutines.tasks.await
 
 class FirebaseRepo {
 
-    val db = Firebase.firestore
+    val db1 = Firebase.firestore
     val storageRef = Firebase.storage.reference
 
     suspend fun sendProfile(profile: Profile) {
 
-        db.collection("Profile")
+        db1.collection("Profile")
             .document(profile.mail)
             .set(profile)
             .addOnSuccessListener {
@@ -35,7 +35,7 @@ class FirebaseRepo {
 
     suspend fun getProfile(): List<Profile> {
 
-        return db.collection("Profile")
+        return db1.collection("Profile")
             .get()
             .await()
             .toObjects(Profile::class.java)
@@ -50,30 +50,30 @@ class FirebaseRepo {
 
     suspend fun sendMessage(message: Message, groupId: String, groupIdReverse : String) {
 
-        val doc = db.collection("Chats")
+        val doc = db1.collection("Chats")
             .document(groupId)
             .get()
             .await()
 
-        val doc2 = db.collection("Chats")
+        val doc2 = db1.collection("Chats")
             .document(groupIdReverse)
             .get()
             .await()
 
         if (doc.exists()) {
-            db.collection("Chats")
+            db1.collection("Chats")
                 .document(groupId)
                 .update("messageArray", FieldValue.arrayUnion(message))
         }
 
         else if (doc2.exists()) {
-            db.collection("Chats")
+            db1.collection("Chats")
                 .document(groupIdReverse)
                 .update("messageArray", FieldValue.arrayUnion(message))
         }
 
         else {
-            db.collection("Chats")
+            db1.collection("Chats")
                 .document(groupId)
                 .set(hashMapOf("messageArray" to message))
         }
@@ -82,18 +82,18 @@ class FirebaseRepo {
     suspend fun getMessage(groupId : String , groupIdReverse : String) : ArrayOfMessage? {
 
 
-        val doc = db.collection("Chats")
+        val doc = db1.collection("Chats")
             .document(groupId)
             .get()
             .await()
 
-        val doc2 = db.collection("Chats")
+        val doc2 = db1.collection("Chats")
             .document(groupIdReverse)
             .get()
             .await()
 
         if(doc.exists()) {
-             return db.collection("Chats")
+             return db1.collection("Chats")
                    .document(groupId)
                    .get()
                    .addOnSuccessListener{ document ->
@@ -105,7 +105,7 @@ class FirebaseRepo {
         }
 
         else {
-              return  db.collection("Chats")
+              return  db1.collection("Chats")
                 .document(groupIdReverse)
                 .get()
                 .addOnSuccessListener { document ->

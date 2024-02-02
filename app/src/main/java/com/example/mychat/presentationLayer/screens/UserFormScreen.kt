@@ -25,13 +25,14 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
+import com.example.mychat.domainLayer.HiltViewModel
 //import coil.compose.AsyncImage
 import com.example.mychat.presentationLayer.viewModel.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UserForm(
-    mainViewModel: MainViewModel,
+    mainViewModel: HiltViewModel,
     nav: NavHostController,
     Pick: ActivityResultLauncher<PickVisualMediaRequest>
 ) {

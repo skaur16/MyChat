@@ -27,10 +27,11 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.example.mychat.presentationLayer.viewModel.MainViewModel
 import com.example.mychat.dataLayer.Profile
+import com.example.mychat.domainLayer.HiltViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListOfUsers(mainViewModel: MainViewModel, nav: NavHostController) {
+fun ListOfUsers(mainViewModel: HiltViewModel, nav: NavHostController) {
 
     Column() {
         TopAppBar(title = {
@@ -52,7 +53,7 @@ fun ListOfUsers(mainViewModel: MainViewModel, nav: NavHostController) {
 }
 
 @Composable
-fun ProfileCard(profile: Profile, nav: NavHostController, mainViewModel: MainViewModel) {
+fun ProfileCard(profile: Profile, nav: NavHostController, mainViewModel: HiltViewModel) {
     Card(
         modifier = Modifier.clickable {
             mainViewModel.friendMail.value = profile.mail

@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -32,22 +33,27 @@ import com.example.mychat.presentationLayer.viewModel.MainViewModel
 import com.example.mychat.ui.theme.MyChatTheme
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.lifecycle.HiltViewModel
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    val mainViewModel : MainViewModel by viewModels()
 
     private val Pick = registerForActivityResult(ActivityResultContracts.PickVisualMedia())
     { uri ->
-        mainViewModel.image.value = uri
+         var uriCopy = uri
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         registerLoginLauncher()
         setContent {
+
+            val mainViewModel : com.example.mychat.domainLayer.HiltViewModel =  hiltViewModel()
 
 
 
@@ -112,7 +118,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App(
     launcherLoginFlow: (() -> Unit) -> Unit,
-    mainViewModel: MainViewModel,
+    mainViewModel: com.example.mychat.domainLayer.HiltViewModel,
     nav: NavHostController
 ) {
 

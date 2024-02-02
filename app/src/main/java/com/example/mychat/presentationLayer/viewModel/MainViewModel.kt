@@ -16,6 +16,7 @@ class MainViewModel : ViewModel() {
     var firebase = FirebaseRepo()
     var loginLauncherFlow = mutableStateOf(Any())
 
+
     var name = mutableStateOf("")
     var mail = mutableStateOf("")
     var phone = mutableStateOf("")

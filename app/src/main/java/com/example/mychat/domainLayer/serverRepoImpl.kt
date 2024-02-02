@@ -11,7 +11,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.tasks.await
 
-class serverRepoImpl : serverRepo {
+class ServerRepoImpl : ServerRepo {
 
     val db = Firebase.firestore
     val storageRef = Firebase.storage.reference

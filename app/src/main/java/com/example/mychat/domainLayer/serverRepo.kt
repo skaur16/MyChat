@@ -4,7 +4,7 @@ import com.example.mychat.dataLayer.ArrayOfMessage
 import com.example.mychat.dataLayer.Message
 import com.example.mychat.dataLayer.Profile
 
-interface serverRepo {
+interface ServerRepo {
 
     suspend fun sendProfile(profile : Profile)
     suspend fun getProfile() : List<Profile>

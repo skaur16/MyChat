@@ -14,17 +14,19 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavHostController
 import com.example.mychat.domainLayer.HiltViewModel
 import com.example.mychat.presentationLayer.viewModel.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Chat(mainViewModel: HiltViewModel) {
+fun Chat(mainViewModel: HiltViewModel, nav : NavHostController) {
     Column() {
         TopAppBar(title = {
             Text(text = "My Chat")
             TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.Blue)
-        })
+        }
+        )
         Row() {
             Button(onClick = { mainViewModel.getMyChat.value = true }) {
                 Text(text = "Get my chat")

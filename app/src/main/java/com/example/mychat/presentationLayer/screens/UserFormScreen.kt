@@ -54,6 +54,7 @@ fun UserForm(
                     if(mainViewModel.image.value==null){
                         Button(onClick = {
                             Pick.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                            //SetImage()
                         }) {
                             Text(text="Choose photo")
                         }
@@ -126,8 +127,9 @@ fun UserForm(
                     mail = mainViewModel.userMail.value,
                     phone = mainViewModel.phone.value,
                     address = mainViewModel.address.value,
-                    displayImage = mainViewModel.image.value.toString()
-                )
+                   displayImage = mainViewModel.image.value.toString()
+
+                    )
 
                 mainViewModel.sendProfile()
 
@@ -150,3 +152,17 @@ fun UserForm(
     }
 
 }
+/*
+@Composable
+fun SetImage(mainViewModel: HiltViewModel) {
+
+    mainViewModel.image.value = ,
+
+    AsyncImage(model = mainViewModel.image.value,
+        contentDescription = "bdhai ho",
+        modifier = Modifier.width(100.dp).height(100.dp)
+    )
+}
+
+
+ */

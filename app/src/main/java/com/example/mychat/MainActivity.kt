@@ -9,6 +9,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
@@ -21,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -41,11 +43,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-
-    private val Pick = registerForActivityResult(ActivityResultContracts.PickVisualMedia())
+    val Pick = registerForActivityResult(ActivityResultContracts.PickVisualMedia())
     { uri ->
-         var uriCopy = uri
+       // mainViewModel.imageUri.value = uri
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +75,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("UserFormScreen"){ UserForm(mainViewModel , nav ,Pick) }
                         composable("ListOfUsers"){ ListOfUsers(mainViewModel,nav) }
-                        composable("MyChat"){ Chat(mainViewModel) }
+                        composable("MyChat"){ Chat(mainViewModel, nav) }
                     }
 
                 }
@@ -140,6 +143,7 @@ fun App(
                     Log.e("TAG", "FirebaseAuth :- ${user.uid}")
 
                     mainViewModel.userMail.value = user.email.toString()
+
 
 
                 }
